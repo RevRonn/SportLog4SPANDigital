@@ -51,11 +51,6 @@ public class SoccerLog extends SportLog {	//indirectly implements Scorable inter
 		int scoreOne, scoreTwo, index;
 		String teamOne, teamTwo;
 		
-		/*if(scoreLine == null) {
-			System.out.println("@@@ Error: File was not found.");
-		}*/
-			
-		
 		for (String s:scoreLine) {
 			index = s.indexOf(",");
 			
@@ -97,7 +92,6 @@ public class SoccerLog extends SportLog {	//indirectly implements Scorable inter
 				System.out.println("\nError in the score you entered!\n\n");
 				System.out.println("In file: " + fileName + ", at line number: " + (1 + scoreLine.indexOf(s)));
 				System.exit(0);
-				//e.printStackTrace();
 			}
 		}
 	}
