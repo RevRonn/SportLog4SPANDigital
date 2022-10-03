@@ -17,7 +17,7 @@ public class Index {
 
 	public static void main(String[] args) throws FileNotFoundException{
 	
-		SoccerLog soccerLog = new SoccerLog("span1.txt");
+		SoccerLog soccerLog = new SoccerLog("span.txt");
 		SportLog.printScoreLines(soccerLog.getScoreLines());
 		
 		System.out.println("\nPremier Soccer League Log\n\t Club \t        Pts \n-----------------------------");
