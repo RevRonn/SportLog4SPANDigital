@@ -12,6 +12,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class SportLog implements Scorable{
+	
+	private List<String> scoreLines;
+	
+	public SportLog(String fileName) {
+
+		ReadInput myReadInput = new ReadInput();
+		
+		try {
+			scoreLines = myReadInput.readFile(fileName);
+		}
+		catch(NullPointerException e) {
+			System.out.println("~~~InSoccerLog:Error in the file you specified. Check file name and try again");
+		}
+	}
 
 	protected void displayLog(List<String> teamNames, ArrayList<Integer> teamPoints) {
 		
@@ -35,5 +49,9 @@ public abstract class SportLog implements Scorable{
 			theTeamName.append(" ");
 		
 		return theTeamName;
+	}
+	
+	public List<String> getScoreLines() {
+		return scoreLines;
 	}
 }

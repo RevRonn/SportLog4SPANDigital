@@ -7,7 +7,6 @@ package sportlog;
  * OR 1 point each if the score is a draw/tie.
  */
 
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.LinkedHashMap;
@@ -17,24 +16,19 @@ import java.util.Map;
 public class SoccerLog extends SportLog {	//indirectly implements Scorable interface by inheritance{
 
 	private LinkedHashMap<String, Integer> reverseSortedMap, finalHashMap;
-	private List<String> teamNames, scoreLines;
+	private List<String> teamNames;
 	private List<Integer> teamPoints;
 	private String fileName;
 	
-	public SoccerLog(String fileName) throws FileNotFoundException{
+	public SoccerLog(String fileName) {
+		
+		super(fileName);
 		
 		this.fileName = fileName; 
 		reverseSortedMap = new LinkedHashMap<>();
 		finalHashMap = new LinkedHashMap<>();
 		
-		ReadInput myReadInput = new ReadInput();
-		try {
-		scoreLines = myReadInput.readFile(fileName);
-		}
-		catch(NullPointerException e) {
-			System.out.println("~~~InSoccerLog:Error in the file you specified. Check file name and try again");
-		}
-		allocatePoints(scoreLines);
+		allocatePoints(getScoreLines());
 		
 		reverseSortedMap.entrySet()
 		  .stream()
@@ -104,9 +98,5 @@ public class SoccerLog extends SportLog {	//indirectly implements Scorable inter
 	public List<Integer> getSortedTeamPoints(){
 		
 		return teamPoints;
-	}
-
-	public List<String> getScoreLines() {
-		return scoreLines;
 	}
 }
